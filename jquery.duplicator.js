@@ -1,8 +1,8 @@
-function duplicable(class, max) {
-  jQuery(class).parent().on('keyup', class, (function() {
+function duplicable(selector, max) {
+  jQuery(selector).parent().on('keyup', selector, (function() {
     var empties = false;
     // search through and find empties.
-    jQuery(class).each(function() {
+    jQuery(selector).each(function() {
       // TODO: allow variable definitions of empty
       if(jQuery(this).val() == '') {
         if(!empties) {
@@ -13,13 +13,13 @@ function duplicable(class, max) {
         }
       }
     });
-  
+
     if(!empties) {
       // TODO: allow parent groups (for duplicating groups of values or for duplicating UI to go with the field) and inserting in different places as appropriate.
-      if(!max || jQuery(class).length < max)
+      if(!max || jQuery(selector).length < max)
       {
-        var thing = jQuery(class).find(':first').clone().val('');
-        thing.insertAfter(jQuery(class).find(':last'));
+        var thing = jQuery(selector).filter(':first').clone().val('');
+        thing.insertAfter(jQuery(selector).filter(':last'));
       }
     }
   }));
